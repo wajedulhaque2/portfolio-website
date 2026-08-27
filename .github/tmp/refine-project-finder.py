@@ -1,0 +1,45 @@
+from pathlib import Path
+
+path = Path('index.html')
+text = path.read_text(encoding='utf-8')
+
+old_index = """    var sourceCards=Array.from(document.querySelectorAll('article.pcard')).filter(function(card){return !card.closest('#project-finder');});
+    var projectIndex=sourceCards.map(function(card){
+      return {card:card,text:(card.textContent||'').toLowerCase().replace(/\\s+/g,' ').trim()};
+    });
+    var activeFilter=null;
+"""
+new_index = """    var sourceCards=Array.from(document.querySelectorAll('article.pcard')).filter(function(card){return !card.closest('#project-finder');});
+    var seenProjectTitles={};
+    var projectIndex=[];
+    sourceCards.forEach(function(card){
+      var titleNode=card.querySelector('h3');
+      var title=(titleNode ? titleNode.textContent : '').toLowerCase().replace(/\\s+/g,' ').trim();
+      if(title && seenProjectTitles[title])return;
+      if(title)seenProjectTitles[title]=true;
+      projectIndex.push({card:card,text:(card.textContent||'').toLowerCase().replace(/\\s+/g,' ').trim()});
+    });
+    var finderAliases={
+      aerospace:['aerospace','aircraft','aerofoil','supersonic','turbine','engine'],
+      aviation:['aviation','aircraft','engine','aerofoil','supersonic'],
+      coding:['coding','python','matlab','javascript','jupyter'],
+      markets:['markets','market','trading','finance','financial','investor','valuation'],
+      infrastructure:['infrastructure','transport','water','government','solar','hydroelectric']
+    };
+    var activeFilter=null;
+"""
+if old_index not in text:
+    raise SystemExit('Project index snippet not found')
+text = text.replace(old_index, new_index, 1)
+
+old_match = "var queryMatch=terms.every(function(term){return text.indexOf(term)!==-1;});"
+new_match = "var queryMatch=terms.every(function(term){var options=finderAliases[term]||[term];return options.some(function(option){return text.indexOf(option)!==-1;});});"
+if old_match not in text:
+    raise SystemExit('Query matching snippet not found')
+text = text.replace(old_match, new_match, 1)
+
+text = text.replace('data-keywords="finance financial valuation dcf trading options backtesting pairs quant portfolio investor"','data-keywords="finance financial valuation dcf trading options backtesting pairs quant investor"',1)
+text = text.replace('data-keywords="machine learning data analytics statistics regression python jupyter prediction forecasting"','data-keywords="machine learning analytics statistics regression python jupyter prediction forecasting"',1)
+text = text.replace('data-keywords="project management prince2 waterfall risk register stakeholder wbs governance operations"','data-keywords="management prince2 waterfall risk register stakeholder wbs governance operations"',1)
+
+path.write_text(text, encoding='utf-8')
