@@ -21,7 +21,7 @@
     'show','find','about','into','from','that','which','my','your','please','me',
     'some','something','anything','want','wants','need','needs','experience',
     'experiences','skill','skills','role','roles','area','areas','field','fields',
-    'example','examples','see','focused','focus'
+    'example','examples','see','focused','focus','+'
   ]);
 
   const CANONICAL = {
