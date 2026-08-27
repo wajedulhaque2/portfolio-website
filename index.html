@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wajedul Haque | Portfolio</title>
+  <meta name="description" content="Portfolio of Wajedul Haque, a 4th year UCL Mechanical Engineering student working across engineering, data analytics, machine learning and quantitative finance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+      --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+      --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --text-hero:clamp(3rem,0.5rem + 7vw,7rem);
+      --sp1:.25rem;--sp2:.5rem;--sp3:.75rem;--sp4:1rem;--sp5:1.25rem;
+      --sp6:1.5rem;--sp8:2rem;--sp10:2.5rem;--sp12:3rem;--sp16:4rem;
+      --font-body:"Instrument Sans",system-ui,sans-serif;
+      --font-display:"Space Grotesk",system-ui,sans-serif;
+      --radius-sm:.375rem;--radius-md:.75rem;--radius-lg:1rem;
+      --radius-xl:1.5rem;--radius-full:9999px;
+      --transition:180ms cubic-bezier(0.16,1,0.3,1);
+      --content:1160px;
+    }
+    :root,[data-theme="light"]{
+      --bg:#f5f2fb;--surface:#ffffff;--surface2:#ede8f7;--surface3:#e4dcf2;
+      --border:rgba(54,26,84,.13);--divider:rgba(54,26,84,.09);
+      --text:#1a0f2e;--muted:#5a4e72;--faint:#9d93ae;--inv:#ffffff;
+      --accent:#7b2fff;--accent2:#a96fff;
+      --accentbg:rgba(123,47,255,.11);--accentborder:rgba(123,47,255,.22);
+      --sh-sm:0 1px 3px rgba(38,19,84,.07);
+      --sh-md:0 8px 28px rgba(38,19,84,.10);
+      --sh-lg:0 20px 50px rgba(38,19,84,.14);
+    }
+    [data-theme="dark"]{
+      --bg:#0f0a1a;--surface:#180f28;--surface2:#211535;--surface3:#2a1c40;
+      --border:rgba(255,255,255,.09);--divider:rgba(255,255,255,.07);
+      --text:#ede8ff;--muted:#b8aed4;--faint:#7e729c;--inv:#0f0a1a;
+      --accent:#993bff;--accent2:#c48dff;
+      --accentbg:rgba(153,59,255,.16);--accentborder:rgba(153,59,255,.28);
+      --sh-sm:0 1px 3px rgba(0,0,0,.25);
+      --sh-md:0 8px 28px rgba(0,0,0,.38);
+      --sh-lg:0 20px 50px rgba(0,0,0,.50);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:5rem}
+    body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;
+      color:var(--text);background:var(--bg);min-height:100dvh;
+      background-image:radial-gradient(ellipse 60% 40% at 80% -5%,rgba(153,59,255,.18),transparent),
+        radial-gradient(ellipse 40% 30% at 10% 90%,rgba(100,30,200,.10),transparent);}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+    button{font:inherit;cursor:pointer;background:none;border:none}
+    ul{list-style:none}
+    h1,h2,h3,h4{line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
+    p,li{text-wrap:pretty;max-width:72ch}
+    ::selection{background:rgba(153,59,255,.28);color:var(--text)}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--radius-sm)}
+    .skip{position:absolute;left:-999px;top:0;background:var(--surface);color:var(--text);padding:var(--sp3) var(--sp4);z-index:100}
+    .skip:focus{left:var(--sp4);top:var(--sp4)}
+    .wrap{width:min(calc(100% - 2.5rem),var(--content));margin-inline:auto}
+    /* HEADER */
+    .hdr{position:sticky;top:0;z-index:30;
+      background:oklch(from var(--bg) l c h / .82);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--divider);}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp4);padding:var(--sp4) 0;flex-wrap:wrap}
+    .brand{display:inline-flex;align-items:center;gap:var(--sp3);font-weight:700;font-size:var(--text-base);letter-spacing:-.02em}
+    .logo{width:2.6rem;height:2.6rem;border-radius:.9rem;flex-shrink:0;display:grid;place-items:center;
+      background:linear-gradient(135deg,#361a54 0%,#993bff 100%);
+      box-shadow:0 0 0 1px rgba(153,59,255,.35),var(--sh-sm);}
+    .logo svg{width:1.3rem;height:1.3rem;color:#fff}
+    .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp1)}
+    .nav-links a,.theme-btn{min-height:40px;padding:.55rem .9rem;border-radius:var(--radius-full);
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:var(--text-sm);color:var(--muted);border:1px solid transparent;
+      transition:background var(--transition),color var(--transition),border-color var(--transition);}
+    .nav-links a:hover,.nav-links a:focus-visible,.theme-btn:hover,.theme-btn:focus-visible{
+      background:var(--accentbg);color:var(--text);border-color:var(--accentborder);outline:none;}
+    /* HERO */
+    .hero{padding:clamp(4rem,9vw,8rem) 0 clamp(3rem,6vw,5rem)}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:var(--sp10);align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:.45rem;margin-bottom:var(--sp5);
+      padding:.4rem .85rem;border-radius:var(--radius-full);
+      background:var(--accentbg);color:var(--accent2);
+      font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;
+      border:1px solid var(--accentborder);}
+    .eyebrow span{width:.45rem;height:.45rem;border-radius:50%;background:var(--accent);display:inline-block}
+    h1{font-family:var(--font-display);font-size:var(--text-hero);max-width:9ch}
+    .hero-sub{color:var(--muted);margin-top:var(--sp5);max-width:56ch;font-size:var(--text-lg);line-height:1.55}
+    .cta-row{display:flex;flex-wrap:wrap;gap:var(--sp3);margin-top:var(--sp8)}
+    /* BUTTONS */
+    .btn{min-height:48px;padding:.85rem 1.4rem;border-radius:var(--radius-full);
+      display:inline-flex;align-items:center;gap:.5rem;font-weight:600;
+      transition:transform var(--transition),box-shadow var(--transition),background var(--transition),border-color var(--transition);
+      border:1px solid transparent;}
+    .btn:hover,.btn:focus-visible{transform:translateY(-2px);outline:none}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(153,59,255,.35)}
+    .btn-primary:hover{box-shadow:0 8px 28px rgba(153,59,255,.45)}
+    .btn-ghost{background:transparent;border-color:var(--border);color:var(--text)}
+    .btn-ghost:hover{background:var(--surface2);border-color:var(--accentborder)}
+    /* STAT CARD */
+    .stat-card{background:linear-gradient(160deg,var(--surface2),var(--surface));
+      border:1px solid var(--border);border-radius:var(--radius-xl);
+      padding:var(--sp8);box-shadow:var(--sh-lg);}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp4);margin-top:var(--sp6)}
+    .stat{padding:var(--sp5);border-radius:var(--radius-lg);background:var(--surface3);border:1px solid var(--border);}
+    .stat strong{display:block;font-family:var(--font-display);font-size:var(--text-xl);line-height:1;margin-bottom:.35rem;color:var(--accent2)}
+    .stat span{font-size:var(--text-sm);color:var(--muted)}
+    .card-label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:var(--sp3);display:block}
+    /* SECTIONS */
+    section{padding:clamp(3rem,7vw,6rem) 0}
+    .sec-head{margin-bottom:var(--sp10)}
+    .sec-tag{display:block;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:var(--sp3)}
+    .sec-head h2{font-family:var(--font-display);font-size:var(--text-2xl)}
+    .sec-head p{color:var(--muted);margin-top:var(--sp4);max-width:64ch}
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp6)}
+    .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--sp8);box-shadow:var(--sh-sm)}
+    .panel h3{font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--sp4)}
+    .check-list{display:flex;flex-direction:column;gap:var(--sp3)}
+    .check-list li{display:flex;gap:var(--sp3);align-items:flex-start;color:var(--muted);font-size:var(--text-sm)}
+    .check-list li::before{content:"\2756";color:var(--accent);flex-shrink:0;margin-top:.1rem}
+    /* YEAR TABS */
+    .year-nav{display:flex;gap:var(--sp2);margin-bottom:var(--sp8);flex-wrap:wrap}
+    .year-tab{padding:.5rem 1.1rem;border-radius:var(--radius-full);border:1px solid var(--border);
+      font-size:var(--text-sm);font-weight:600;color:var(--muted);cursor:pointer;
+      transition:background var(--transition),color var(--transition),border-color var(--transition);background:var(--surface);}
+    .year-tab.active,.year-tab:hover{background:var(--accentbg);color:var(--accent2);border-color:var(--accentborder)}
+    .year-group{display:none}
+    .year-group.active{display:block}
+    /* PROJECT GRID */
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp5)}
+    /* PROJECT CARD */
+    .pcard{position:relative;overflow:hidden;
+      background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);
+      padding:1.75rem;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:var(--sp4);
+      transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);}
+    .pcard:hover{transform:translateY(-3px);box-shadow:var(--sh-lg);border-color:var(--accentborder)}
+    .pcard::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2),transparent 75%);}
+    .pcard.featured::before{background:linear-gradient(90deg,#f59e0b,#f97316,transparent 75%)}
+    .pcard.featured{border-color:rgba(245,158,11,.25)}
+    .pcard.featured:hover{border-color:rgba(245,158,11,.45)}
+    .featured-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:var(--text-xs);
+      color:#f59e0b;font-weight:600;letter-spacing:.04em;margin-bottom:-.25rem}
+    .pmeta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .pill{display:inline-flex;align-items:center;min-height:28px;padding:.25rem .7rem;
+      border-radius:var(--radius-full);background:var(--accentbg);color:var(--accent2);
+      border:1px solid var(--accentborder);font-size:var(--text-xs);letter-spacing:.02em;}
+    .year-badge{font-size:var(--text-xs);color:var(--faint)}
+    .pcard h3{font-family:var(--font-display);font-size:var(--text-lg);line-height:1.2}
+    .pcard p{color:var(--muted);font-size:var(--text-sm)}
+    .tools{color:var(--muted);font-size:var(--text-sm)}
+    .tools strong{color:var(--text)}
+    .plinks{display:flex;flex-wrap:wrap;gap:var(--sp4);margin-top:auto}
+    .plinks a{color:var(--accent2);font-size:var(--text-sm);font-weight:600;
+      border-bottom:1px solid rgba(153,59,255,.3);
+      transition:color var(--transition),border-color var(--transition);}
+    .plinks a:hover{color:var(--text);border-color:var(--accent)}
+    .plinks a[aria-disabled="true"]{opacity:.58;cursor:not-allowed;border-bottom-style:dashed;color:var(--faint)}
+    /* GUIDE */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp5);margin-bottom:var(--sp6)}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--sp6);box-shadow:var(--sh-sm);}
+    .step-n{width:2.2rem;height:2.2rem;border-radius:50%;background:linear-gradient(135deg,#361a54,#993bff);
+      color:#fff;font-weight:700;font-size:var(--text-sm);display:grid;place-items:center;margin-bottom:var(--sp4);}
+    .step h3{font-size:var(--text-base);font-family:var(--font-display);margin-bottom:var(--sp3)}
+    .step p{font-size:var(--text-sm);color:var(--muted)}
+    .code-wrap{background:#0a0614;border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);
+      padding:var(--sp6);overflow-x:auto;margin-top:var(--sp6);}
+    pre{font-family:"Fira Code","Cascadia Code",monospace;font-size:.88rem;line-height:1.7;color:#dcc9ff;white-space:pre-wrap}
+    /* SKILLS */
+    .skills-wrap{display:flex;flex-wrap:wrap;gap:var(--sp3)}
+    .skill{padding:.6rem 1.1rem;border-radius:var(--radius-full);border:1px solid var(--border);
+      background:var(--surface);color:var(--muted);font-size:var(--text-sm);
+      transition:background var(--transition),border-color var(--transition),color var(--transition);}
+    .skill:hover{background:var(--accentbg);border-color:var(--accentborder);color:var(--text)}
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp6)}
+    .rule{border:none;border-top:1px solid var(--divider);margin:0}
+    footer{padding:var(--sp8) 0 var(--sp12);color:var(--faint);font-size:var(--text-sm)}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp4)}
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);
+      transition:opacity .7s cubic-bezier(0.16,1,0.3,1),transform .7s cubic-bezier(0.16,1,0.3,1)}
+    .reveal.vis{opacity:1;transform:none}
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .project-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr}
+      h1{font-size:clamp(2.8rem,.5rem + 9vw,5rem)}
+      .nav{flex-direction:column;align-items:flex-start}
+      .nav-links{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6l3 12 3-8 3 8 3-12"/>
+        </svg>
+      </span>
+      Wajedul Haque
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#featured-work">Featured</a>
+      <a href="#engineering">Engineering</a>
+      <a href="#ml-finance">Data / ML / Finance</a>
+      <a href="#design">Design</a>
+      <a href="#beyond">Beyond Engineering</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow reveal"><span></span>UCL &middot; Mechanical Engineering &middot; 4th Year</div>
+        <h1 class="reveal">Engineer.<br>Analyst.<br>Explorer.</h1>
+        <p class="hero-sub reveal">
+          I&rsquo;m Wajedul Haque, passionate about learning new things every day and seeing meaningful applications of them. From pylon design and underwater vehicle CFD to ML in healthcare and global development, I bring the same curiosity to every problem.
+        </p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="#engineering">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <aside class="stat-card reveal">
+        <span class="card-label">Portfolio Overview</span>
+        <h2 style="font-family:var(--font-display);font-size:var(--text-xl)">Three years.<br>Thirty-four projects.</h2>
+        <div class="stat-grid">
+          <div class="stat"><strong>14</strong><span>Engineering projects | structural, fluids, FEA &amp; advanced thermo.</span></div>
+          <div class="stat"><strong>16</strong><span>Data / ML / Quant Finance | Excel dashboards, forecasting, backtesting, pricing, statistical arbitrage &amp; clinical models.</span></div>
+          <div class="stat"><strong>4</strong><span>Design &amp; Sustainability | circular economy &amp; global development.</span></div>
+          <div class="stat"><strong>UCL</strong><span>Mech Eng, London. Expected 1st Class graduation in 2027.</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">About Me</span>
+        <h2>Built on curiosity, driven by application.</h2>
+        <p>I&rsquo;m a 4th year Mechanical Engineering student at UCL. What drives me is not just understanding how things work, but seeing where that understanding can lead. Across three years I&rsquo;ve worked on everything from structural FEM and CFD to machine learning in healthcare, circular economy design, and smart water infrastructure in East Africa.</p>
+      </div>
+      <div class="about-grid">
+        <div class="panel reveal">
+          <h3>What I bring</h3>
+          <ul class="check-list">
+            <li>CFD simulation in Star-CCM+ (RANS-VOF, wave interaction, GCI validation)</li>
+            <li>FEA in ANSYS and ABAQUS: stress concentration, plasticity, damage modelling</li>
+            <li>MATLAB modelling: dynamics, ODEs, population &amp; epidemic simulation</li>
+            <li>Python / Jupyter ML pipelines: SMOTE resampling, Logistic Regression, Random Forest, SVM</li>
+            <li>Structural analysis with GSA; fluid mechanics and hydroelectric system design</li>
+            <li>Physical build &amp; prototyping: IMechE vehicle, FDM 3D printing, tensile testing</li>
+            <li>Materials science: tensile, Charpy impact, metallography, microstructure analysis</li>
+            <li>Project management: Waterfall, PRINCE2, WBS, risk registers, stakeholder governance</li>
+            <li>Excel analytics: Power Query, Power Pivot, DAX, data modelling, PivotCharts, slicers and executive dashboard design</li>
+          </ul>
+        </div>
+        <div class="panel reveal">
+          <h3>This portfolio</h3>
+          <ul class="check-list">
+            <li>Years 1, 2 &amp; 3 projects plus personal analytics work all live</li>
+            <li>Four focused sections: Engineering, ML / Finance, Design &amp; Sustainability, and Management</li>
+            <li>Year tabs within each section for easy navigation</li>
+            <li> Built with light and dark mode</li>
+            <li> Fully responsive on mobile and desktop</li>
+            <li> Links to reports included throughout.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="featured-work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Featured Work</span>
+        <h2>Featured projects worth your time.</h2>
+        <p>A curated selection of my strongest work across research, simulation, design, machine learning, and real-world engineering impact. Explore these first for a fast overview of what I can do.</p>
+      </div>
+      <div class="project-grid">
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Portfolio Analytics Highlight</div>
+          <div class="pmeta">
+            <span class="pill">Excel Analytics</span>
+            <span class="pill">Project Controls</span>
+            <span class="year-badge">Personal Project &middot; August 2026</span>
+          </div>
+          <h3>UK Government Major Projects | Cost, Schedule and Delivery-Risk Dashboard</h3>
+          <p>Built a refreshable Excel decision-support dashboard combining the 2024&ndash;25 and 2025&ndash;26 NISTA Major Projects datasets. Standardised 402 project-year records with Power Query, created a Power Pivot data model and DAX measures, and developed a transparent 100-point analytical risk score combining delivery confidence, whole-life cost exposure, project duration, and financial-year variance.</p>
+          <p class="tools"><strong>Outputs:</strong> Executive dashboard &middot; department comparison &middot; sortable project risk register &middot; risk summary &middot; data-quality checks &middot; methodology and assumptions</p>
+          <p class="tools"><strong>Tools:</strong> Excel 365, Power Query, Power Pivot, DAX, PivotTables, PivotCharts, slicers, conditional formatting</p>
+          <div class="plinks">
+            <a href="#" data-workbook-view aria-disabled="true">Live Workbook Link Pending</a>
+            <a href="#" data-workbook-download aria-disabled="true">Download Link Pending</a>
+          </div>
+        </article>
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Research Highlight</div>
+          <div class="pmeta">
+            <span class="pill">CFD</span>
+            <span class="pill">Hydrodynamics</span>
+            <span class="year-badge">Year 3 | Individual Project</span>
+          </div>
+          <h3>Underwater Vehicle Hydrodynamics | RANS-VOF CFD in Star-CCM+</h3>
+          <p>Conducted a full RANS-VOF CFD simulation of wave interaction with a submerged underwater vehicle in Star-CCM+, investigating how submergence depth affects drag. Validated the simulation against Chaplin (1984) experimental data with a Grid Convergence Index (GCI) of 1.47%, confirming mesh-independent results. Key finding: reducing submergence depth h/D from 2.0 to 1.1 produces a 106.5% increase in drag.</p>
+          <p class="tools"><strong>Tools:</strong> Star-CCM+, RANS, VOF free-surface, GCI analysis, MATLAB post-processing</p>
+        </article>
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Data Science Highlight</div>
+          <div class="pmeta">
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Healthcare</span>
+            <span class="year-badge">Year 3 | Data Mining and Analysis</span>
+          </div>
+          <h3>ML for Diabetic Patient Readmission | 101,766 Clinical Records</h3>
+          <p>Built a full supervised ML pipeline in Python to predict 30-day hospital readmission for diabetic patients. Handled severe class imbalance using SMOTE oversampling and TomekLinks undersampling, then compared Logistic Regression, MLP, Random Forest, and SVM models to identify the best-performing approach on this large clinical dataset.</p>
+          <p class="tools"><strong>Tools:</strong> Python, Jupyter, pandas, scikit-learn, SMOTE, TomekLinks</p>
+        </article>
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Major Design Project</div>
+          <div class="pmeta">
+            <span class="pill">Product Design</span>
+            <span class="pill">Circular Economy</span>
+            <span class="year-badge">Year 2 | Design Project</span>
+          </div>
+          <h3>Reusable Takeaway Packaging | Revolutionising the Circular Economy</h3>
+          <p>Led end-to-end development of reusable takeaway containers with a QR-code return system and companion app, moving from concept and PDS through prototyping, testing, FEA, and public feedback. This project combines sustainability, product design, engineering validation, and user-centred thinking in one flagship piece of work.</p>
+          <p class="tools"><strong>Tools:</strong> Fusion 360, FEA, Bambu FDM 3D printing, tensile and compression testing, survey design</p>
+        </article>
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Global Impact Project</div>
+          <div class="pmeta">
+            <span class="pill">Global Development</span>
+            <span class="pill">Water Infrastructure</span>
+            <span class="year-badge">Year 3 | Ethiopia Project</span>
+          </div>
+          <h3>Smart Hybrid Water Supply | Rural Schools in Ethiopia</h3>
+          <p>Designed a solar-powered hybrid water supply system for rural school sites in Ethiopia, combining borehole pumping, rainwater harvesting, UV filtration, and digital monitoring. The project links engineering design with public health, education access, and long-term infrastructure resilience.</p>
+          <p class="tools"><strong>Tools:</strong> Hydraulic design, solar sizing calculations, UV treatment, Water monitoring</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== ENGINEERING ===== -->
+  <section id="engineering">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Engineering</span>
+        <h2>Technical design, build, and analysis.</h2>
+        <p>Structural systems, fluid mechanics, FEA, advanced thermodynamics, and materials science: spanning simulation, physical construction, and laboratory characterisation across three years.</p>
+      </div>
+
+      <!-- Year tabs -->
+      <div class="year-nav reveal" id="eng-tabs">
+        <button class="year-tab active" data-target="eng-y1">Year 1</button>
+        <button class="year-tab" data-target="eng-y2">Year 2</button>
+        <button class="year-tab" data-target="eng-y3">Year 3</button>
+      </div>
+
+      <!-- Year 1 -->
+      <div class="year-group active" id="eng-y1">
+        <div class="project-grid">
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Structural Engineering</span>
+              <span class="year-badge">Year 1</span>
+            </div>
+            <h3>Electricity Pylon Design | Uganda Vaccine Plant</h3>
+            <p>Designed and structurally analysed a 40 m S235 steel electricity pylon to power a TB vaccine production plant in Mbarara, Uganda. Iterated through three truss configurations, selecting a design inspired by Uganda&rsquo;s grey crowned crane for its low centre of mass and minimal member count. Validated across four load scenarios in GSA, maximum displacement was just 3.5 mm under combined wind and dual cable loads, with all members well below the 200 MPa safety limit.</p>
+            <p class="tools"><strong>Tools:</strong> GSA (structural FEM), truss method of sections, hand calculations</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/11FcY-K9Jo8nt7tuyK5zlBTZVwbD6tBT5/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Fluid Mechanics</span>
+              <span class="pill">Energy Systems</span>
+              <span class="year-badge">Year 1</span>
+            </div>
+            <h3>Hydroelectric Dam Design | Mitano River, Uganda</h3>
+            <p>Designed a concrete arch dam on the Mitano River to generate renewable electricity for the same vaccine plant. Applied Bernoulli&rsquo;s equation and power output equations to size the system, and used MATLAB to optimise the penstock diameter through iterative trial, settling on 0.5 m for the best seasonal balance. Selected a Francis turbine based on flow rate and head height, achieving a confirmed minimum output of 2.75 MW against a 2.5 MW requirement.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB, Bernoulli&rsquo;s equation, Excel (flow data), turbine selection charts</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1-qQ4zo1-eG9PxVGufxVZfw5v20z-gO6I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Mechatronics</span>
+              <span class="pill">Design &amp; Build</span>
+              <span class="year-badge">Year 1 &middot; IMechE 2024</span>
+            </div>
+            <h3>IMechE Repeatable Vehicle | Design Challenge 2024</h3>
+            <p>Designed and built an autonomous motorised vehicle that travels to a wall and returns precisely to its starting point, triggered by a single button press. Engineered a leadscrew-based distance-measuring system, a DPDT switch for motor reversal on wall impact, and a dual-redundancy stopping mechanism (friction plate + cut-off switch). Used a 10:1 motor reduction combined with a 2.4:1 aluminium CNC timing pulley for precision speed control.</p>
+            <p class="tools"><strong>Tools:</strong> DC motor, leadscrew, DPDT switch, CNC timing pulleys, circuit design</p>
+            <p class="tools"><strong>Specs:</strong> 780 g &middot; 9 V &middot; 145 RPM &middot; &pound;38.96 total build cost</p>
+            <div class="plinks">
+            <a href="https://drive.google.com/file/d/1iQrEhYzRieFUBVfgi7LUHpJFWfh_yJFK/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View Poster &rarr;</a>
+            <a href="https://drive.google.com/file/d/1jQ9gIDYeY-hIJPB1ijCnyrbpjbnRsMSM/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Photo &rarr;</a>
+            <a href="https://a360.co/4b911jG" target="_blank" rel="noopener noreferrer">View CAD &rarr;</a>
+</div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Materials Science</span>
+              <span class="year-badge">Year 1</span>
+            </div>
+            <h3>Materials Characterisation | Tensile Testing &amp; Metallography</h3>
+            <p>Conducted tensile testing on mild steel and polyethylene, calculating Young&rsquo;s modulus, yield strength, % elongation, and reduction of area from raw load&ndash;displacement data. Performed metallographic analysis on seven alloy specimens to identify grain structures, coring, porosity types, and dendritic morphology. Steel yielded at ~292 MPa (Young&rsquo;s modulus 27.2 GPa); polyethylene elongated 184% before fracture. Included a full measurement uncertainty analysis using caliper gauge tolerances.</p>
+            <p class="tools"><strong>Tools:</strong> Tensile testing machine, Vickers hardness tester, optical microscope, XRF analysis</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1GvV0_Qx7a1hcuCKe-kuhmr56dE1Q81ja/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Lab Report &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /eng-y1 -->
+
+      <!-- Year 2 -->
+      <div class="year-group" id="eng-y2">
+        <div class="project-grid">
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">FEA</span>
+              <span class="pill">Structural</span>
+              <span class="year-badge">Year 2 </span>
+            </div>
+            <h3>Beam Bending FEA | I-Beam Deflection in ANSYS</h3>
+            <p>Simulated deflection of a simply-supported I-beam under point load using ANSYS, then validated the result analytically. Achieved only 2.6% error between the FEA result and the theoretical prediction. Explored mesh convergence, element type selection, and boundary condition sensitivity to understand sources of numerical error.</p>
+            <p class="tools"><strong>Tools:</strong> ANSYS Mechanical, analytical beam theory, MATLAB post-processing</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1uzZkCXvnbYnLSr4_UslsOjckjxG2bbwi/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Control &amp; Instrumentation</span>
+              <span class="year-badge">Year 2 </span>
+            </div>
+            <h3>Strain Gauge Scale &amp; DC Motor Control Lab</h3>
+            <p>Built a Wheatstone bridge-based load cell using strain gauges, calibrated it in LabVIEW, and characterised its linearity and sensitivity. In the second part, derived open-loop and closed-loop transfer functions for a DC motor and implemented them in MATLAB / Simulink; comparing simulated step responses against measured data from the physical motor rig.</p>
+            <p class="tools"><strong>Tools:</strong> LabVIEW, MATLAB, Simulink, Wheatstone bridge, DC motor test rig</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1lU_z0jjCuz0Z9OV-9HQ4apX0SnzKrK-F/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Lab Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Aerodynamics</span>
+              <span class="pill">Fluid Mechanics</span>
+              <span class="year-badge">Year 2 </span>
+            </div>
+            <h3>Aerofoil Lift Analysis| NACA-0012 Wind Tunnel</h3>
+            <p>Processed wind tunnel pressure data for a NACA-0012 aerofoil across multiple angles of attack and plotted lift coefficient vs. &alpha;. Applied Joukowsky conformal mapping theory to predict the theoretical pressure distribution, then compared it against experimental results. Identified stall onset and quantified the deviation between potential flow theory and real viscous behaviour at high angles.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB (data processing &amp; plotting), Joukowsky conformal mapping, wind tunnel pressure taps</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/10hWPxiVKYGgeMOS9cME6HDxTNSxfke8B/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Manufacturing</span>
+              <span class="pill">CAD &amp; Design</span>
+              <span class="year-badge">Year 2</span>
+            </div>
+            <h3>Turbine Impeller Redesign | Pratt &amp; Whitney PW100</h3>
+            <p>Reverse-engineered and redesigned the centrifugal impeller of the Pratt &amp; Whitney PW100 turboprop engine in CAD. Selected a replacement material based on high-temperature mechanical performance and density trade-offs, and produced a full life cycle assessment of the redesigned component covering manufacturing emissions, in-service energy, and end-of-life recycling pathways.</p>
+            <p class="tools"><strong>Tools:</strong> CAD (SolidWorks), CES Material Selection, LCA framework</p>
+            <div class="plinks">
+              <a href="https://drive.google.com/file/d/1-2h09QaS4WK9v1q3IUrRFjNyWOpb4o8d/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a>
+              <a href="https://a360.co/4vn5Vkv" target="_blank" rel="noopener noreferrer">View CAD &rarr;</a>
+            </div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Materials Science</span>
+              <span class="year-badge">Year 2 </span>
+            </div>
+            <h3>Charpy Impact | HDPE &amp; Nylon Fracture Toughness</h3>
+            <p>Conducted Charpy V-notch impact tests on HDPE and Nylon specimens at varying temperatures and notch geometries. Calculated absorbed energy, fracture toughness (K<sub>Ic</sub>), and ductile-to-brittle transition temperatures from the experimental data. Compared the failure modes under optical microscopy and related microstructural features to the macroscopic toughness values.</p>
+            <p class="tools"><strong>Tools:</strong> Charpy impact tester, optical microscope, fracture mechanics calculations</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/15nU8es--LVBOr1a30AEnqH9c8ORhC94g/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Lab Report &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /eng-y2 -->
+
+      <!-- Year 3 -->
+      <div class="year-group" id="eng-y3">
+        <div class="project-grid">
+
+          <article class="pcard featured reveal">
+            <div class="featured-badge">&#9733; Research Highlight</div>
+            <div class="pmeta">
+              <span class="pill">CFD</span>
+              <span class="pill">Hydrodynamics</span>
+              <span class="year-badge">Year 3</span>
+            </div>
+            <h3>Underwater Vehicle Hydrodynamics | RANS-VOF CFD in Star-CCM+</h3>
+            <p>Conducted a full RANS-VOF CFD simulation of wave interaction with a submerged underwater vehicle in Star-CCM+, investigating how submergence depth affects drag. Validated the simulation against Chaplin (1984) experimental data with a Grid Convergence Index (GCI) of 1.47%, confirming mesh-independent results. Key finding: reducing submergence depth h/D from 2.0 to 1.1 produces a 106.5% increase in drag; a critical result for AUV design near the free surface.</p>
+            <p class="tools"><strong>Key Findings:</strong> CD +106.5% at h/D 2.0&rarr;1.1 &middot; Min drag: h/D = 2.0 &middot; Min surface signature: h/D = 1.5, Fr = 0.226</p>
+<p class="tools"><strong>Validation:</strong> GCI = 1.47% &middot; FV error 5.3% &middot; FH error 4.0% vs Chaplin (1984)</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1fjYayafVmkQYpgeb-sldeFVniMEqiyhv/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">FEA</span>
+              <span class="pill">Elasticity</span>
+              <span class="year-badge">Year 3  </span>
+            </div>
+            <h3>Elasticity FEA | Stress Concentration in a Perforated Plate</h3>
+            <p>Modelled a steel plate with a central circular hole under biaxial loading (100 MPa / 40 MPa) in ABAQUS, performing a full stress concentration factor (SCF) study. Compared FEA results against analytical Kirsch solution predictions and post-processed stress fields with MATLAB. Investigated how mesh refinement around the hole boundary affected SCF accuracy.</p>
+            <p class="tools"><strong>Tools:</strong> ABAQUS, analytical elasticity (Kirsch solution), MATLAB
+             <class="tools"></class><br><strong>Loading:</strong> 100 MPa / 40 MPa biaxial</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1KPOokclTCZZZbTKQ01GS29NyP2WSmCyX/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">FEA</span>
+              <span class="pill">Plasticity</span>
+              <span class="year-badge">Year 3 </span>
+            </div>
+            <h3>Plasticity FEA | Aluminium Tensile Test Simulation</h3>
+            <p>Extracted tensile test data for aluminium (E &asymp; 70,300 MPa) and implemented progressive material models in ABAQUS covering elastic behaviour, plastic hardening, ductile damage, and necking. Compared FEA stress-strain curves against the experimental data at each stage, quantifying where each model breaks down and why. Final simulation captured necking geometry to within 4% of measured values.</p>
+            <p class="tools"><strong>Tools:</strong> ABAQUS, tensile test data, damage mechanics models</p>
+            <p class="tools"><strong>Material:</strong> Aluminium, E &asymp; 70,300 MPa</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/186q8xsE2YwETJgBHOqTa-Gi-r7u3dp6K/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Advanced Fluids</span>
+              <span class="year-badge">Year 3 </span>
+            </div>
+            <h3>Supersonic Flow Analysis | Schlieren Imaging &amp; Shock Relations</h3>
+            <p>Analysed Schlieren images of supersonic flow to identify oblique shock and expansion fan features. Derived oblique shock relations from first principles and applied them to calculate the upstream Mach number from measured shock angles. Extended the analysis using Prandtl-Meyer expansion theory to characterise the expansion fan downstream, comparing theoretical predictions against the experimental images.</p>
+            <p class="tools"><strong>Tools:</strong> Schlieren imaging analysis, oblique shock theory, Prandtl-Meyer expansion fan equations</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1cHsfU4m7rPkiJmQXIHh5Oym7UCmuOYKo/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Thermodynamics</span>
+              <span class="year-badge">Year 3 </span>
+            </div>
+            <h3>Advanced Thermodynamics: Exergy, Fuel Cells &amp; Nuclear vs Solar EIA</h3>
+            <p>Covered four linked topics: exergy analysis of a steam power plant to quantify irreversibilities at each component; PEM hydrogen fuel cell modelling achieving 340 kW output at 73% efficiency; combustion emissions and air-fuel ratio (AFR) analysis; and a comparative environmental impact assessment contrasting nuclear power and utility-scale solar PV across their full life cycles.</p>
+            <p class="tools"><strong>Tools:</strong> Exergy analysis, PEM fuel cell modelling, combustion chemistry, LCA</p>
+            <p class="tools"><strong>Key result:</strong> PEM fuel cell: 340 kW, 73% efficiency</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1GROj_1aP9K6HnIzSidBacS9VHLB_uRsO/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /eng-y3 -->
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== ML / FINANCE ===== -->
+  <section id="ml-finance">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Machine Learning / Data Science / Quant Finance</span>
+        <h2>Models, simulation, and data analysis.</h2>
+        <p>From mathematical modelling and ML pipelines on 100,000+ clinical records to quantitative trading research and derivatives pricing: applying rigorous analytical methods to real-world data.</p>
+      </div>
+
+      <div class="year-nav reveal" id="ml-tabs">
+        <button class="year-tab active" data-target="ml-y1">Year 1</button>
+        <button class="year-tab" data-target="ml-y2">Year 2</button>
+        <button class="year-tab" data-target="ml-y3">Year 3</button>
+        <button class="year-tab" data-target="ml-personal">Personal Projects</button>
+      </div>
+
+      <!-- ML Year 1 -->
+      <div class="year-group active" id="ml-y1">
+        <div class="project-grid">
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Mathematical Modelling</span>
+              <span class="pill">MATLAB</span>
+              <span class="year-badge">Year 1 </span>
+            </div>
+            <h3>Population Growth Modelling | Logistic &amp; Exponential Models</h3>
+            <p>Applied exponential and logistic growth models to world population data spanning &minus;10,000 to 2021. Derived discrete and continuous forms of both models, estimated the growth rate r from recent data intervals, and set Earth&rsquo;s carrying capacity K at ~10 billion. Simulated future population trajectories in MATLAB, demonstrating convergence to K with progressively slowing growth. Connected the discrete form to Riemann sum theory and its applications in finance and environmental science.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB, Excel (xlsread), logistic ODE, Riemann sum analysis</p>
+            <p class="tools"><strong>Key result:</strong> r = 0.0438 from 2009&ndash;2021 data; population converges to K &asymp; 10 billion by ~2230</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/18gTyrY2VQUwJ9mDQP1iMVadW-5BXs8cO/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Project &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Epidemiological Modelling</span>
+              <span class="pill">MATLAB</span>
+              <span class="year-badge">Year 1 </span>
+            </div>
+            <h3>SIR Epidemic Simulation | COVID-19, H1N1, TB &amp; Common Cold</h3>
+            <p>Built a full SIR (Susceptible&ndash;Infected&ndash;Recovered) model in MATLAB to simulate disease spread across the UK population. Derived the pandemic onset condition (b &gt; k), simulated four real-world case studies with justified parameter choices, and validated outputs against published research graphs. Critically discussed ethical challenges around data privacy, parameter estimation, and the limitations of homogeneous mixing assumptions inherent to the SIR framework.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB (iterative ODE solver), SIR differential equations, parameter estimation</p>
+            <p class="tools"><strong>Cases:</strong> COVID-19 (b=0.2, k=0.1), H1N1 (b=0.14, k=0.16), Common Cold, Tuberculosis</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1xll_sxwTMLoYl1cp66zBahCKc5mkQNuL/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Project &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /ml-y1 -->
+
+      <!-- ML Year 2 -->
+      <div class="year-group" id="ml-y2">
+        <div class="project-grid">
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Dynamics</span>
+              <span class="pill">ODE Modelling</span>
+              <span class="year-badge">Year 2 </span>
+            </div>
+            <h3>Footbridge Lateral Dynamics | Millennium Bridge-Style Oscillation</h3>
+            <p>Developed an ODE model of lateral pedestrian-induced vibrations in a Millennium Bridge-style footbridge, capturing the coupling between crowd walking frequency and structural resonance. Investigated the effect of damping coefficient and pedestrian synchronisation on amplitude growth, and identified the critical crowd density at which vibrations become self-sustaining. Connected results to the real engineering failure of the Millennium Bridge in 2000 and the subsequent damper retrofit.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB (ODE45 solver), coupled pedestrian-structure dynamics, resonance theory</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/14xushi5yPieaS0uuNiYY8PIscuwTFVPe/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Linear Algebra</span>
+              <span class="pill">Image Processing</span>
+              <span class="year-badge">Year 2</span>
+            </div>
+            <h3>Matrix Methods &amp; SVD Image Compression</h3>
+            <p>Applied eigenvalue decomposition and singular value decomposition (SVD) to image compression, demonstrating how rank-k approximations reconstruct images at varying quality levels. Implemented Markov chain analysis to model state-transition probabilities and steady-state distributions. Connected the mathematical theory to practical applications including PageRank-style algorithms and probabilistic engineering systems.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB, SVD, eigenvalue decomposition, Markov chains</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/15Daii9tF5UPuYZ7ytQwP5rArf6UPHWR3/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+          <article class="pcard reveal">
+            <div class="pmeta">
+              <span class="pill">Statistics</span>
+              <span class="pill">Regression</span>
+              <span class="year-badge">Year 2 &middot; BENG0019</span>
+            </div>
+            <h3>Probability, Statistics &amp; Regression Analysis</h3>
+            <p>Conducted regression analysis, hypothesis testing, and t-statistic calculations on engineering and finance datasets. Assessed model fit, checked regression assumptions (normality, homoscedasticity, independence), and interpreted coefficient significance. Applied the methods to real-world problems including prediction intervals and comparison of means across sample groups.</p>
+            <p class="tools"><strong>Tools:</strong> MATLAB / Excel, regression analysis, hypothesis testing, t-distributions</p>
+            <div class="plinks"><a href="https://drive.google.com/file/d/1loXiLiSAas9vBIecJgnJ-bs2qRwJqHZM/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /ml-y2 -->
+
+      <!-- ML Year 3 -->
+      <div class="year-group" id="ml-y3">
+        <div class="project-grid">
+
+          <article class="pcard featured reveal">
+            <div class="featured-badge">&#9733; Data Science Highlight</div>
+            <div class="pmeta">
+              <span class="pill">Machine Learning</span>
+              <span class="pill">Python</span>
+              <span class="year-badge">Year 3 &middot; Data Mining and Analysis</span>
+            </div>
+            <h3>ML for Diabetic Patient Readmission | 101,766 Clinical Records</h3>
+            <p>Built a full supervised ML pipeline in Python to predict 30-day hospital readmission for diabetic patients. Handled severe class imbalance using SMOTE oversampling and TomekLinks undersampling, then compared Logistic Regression, MLP neural network, Random Forest, and SVM classifiers. Best model (Logistic Regression with TomekLinks undersampling) balanced precision and recall most effectively across the imbalanced clinical dataset. Evaluated all models with ROC-AUC, confusion matrices, and classification reports.</p>
+            <p class="tools"><strong>Tools:</strong> Python, Jupyter, scikit-learn, imbalanced-learn (SMOTE / TomekLinks), pandas</p>
+            <p class="tools"><strong>Dataset:</strong> 101,766 patient records &middot; Models: LR, MLP, RF, SVM</p>
+            <div class="plinks"><a href="https://github.com/wajedulhaque2/Hospital-Readmission-ML" target="_blank" rel="noopener noreferrer">View Notebook &rarr;</a> <a href="https://drive.google.com/file/d/185UzYjXgdAZYNzvMrqu5pNEbc1QO-gdj/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+          </article>
+
+        </div>
+      </div><!-- /ml-y3 -->
+
+    <div class="year-group" id="ml-personal">
+  <div class="project-grid">
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Excel &amp; Project Analytics Project</div>
+      <div class="pmeta">
+        <span class="pill">Excel Analytics</span>
+        <span class="pill">Infrastructure Portfolio</span>
+        <span class="year-badge">Personal Project &middot; August 2026</span>
+      </div>
+      <h3>UK Government Major Projects | Cost, Schedule and Delivery-Risk Dashboard</h3>
+      <p>Developed a refreshable portfolio-analysis workbook for major UK government projects across the 2024&ndash;25 and 2025&ndash;26 reporting periods. The model combines 402 project-year records, standardises mixed date and financial fields, relates projects to departments and reporting periods, and calculates portfolio KPIs covering cost, duration, delivery confidence, and data completeness.</p>
+      <p class="tools"><strong>Analytical model:</strong> Custom 100-point risk score using delivery rating, whole-life cost exposure, duration, and financial-year variance; projects without a usable official rating are clearly marked as not scored.</p>
+      <p class="tools"><strong>Tools:</strong> Microsoft Excel 365, Power Query, Power Pivot, DAX, PivotTables, PivotCharts, slicers, conditional formatting</p>
+      <div class="plinks">
+        <a href="#" data-workbook-view aria-disabled="true">Live Workbook Link Pending</a>
+        <a href="#" data-workbook-download aria-disabled="true">Download Link Pending</a>
+      </div>
+    </article>
+
+    <article class="pcard reveal">
+      <div class="pmeta">
+        <span class="pill">Machine Learning</span>
+        <span class="pill">Sports Analytics</span>
+        <span class="year-badge">Personal Project &middot; July 2026</span>
+      </div>
+      <h3>2026 FIFA World Cup Prediction Framework</h3>
+      <p>Built a full probabilistic forecasting framework for the 2026 FIFA World Cup quarter-finals from scratch. Engineered a leak-safe temporal feature pipeline using competition weighting, time decay, Elo ratings, and opponent-adjusted form across 49,505 historical international matches. Compared Logistic Regression, Random Forest, XGBoost, and CatBoost under chronological validation - Logistic Regression won with a log loss of 0.8737, outperforming more complex tree ensembles. Assembled a weighted ensemble of the classifier, a Poisson GLM, and a Dixon-Coles score model, then ran 100,000 Monte Carlo tournament simulations. Diagnosed and resolved the "Argentina effect" where historical dominance, bracket path, and draw mechanics inflated one team's title probability despite weaker current squad metrics by redesigning the model around an explicit transparent team-strength table separating intrinsic strength, route difficulty, and knockout randomness.</p>
+      <p class="tools"><strong>Tools:</strong> Python, pandas, scikit-learn, CatBoost, XGBoost, statsmodels, SciPy, NumPy, Matplotlib, Plotly</p>
+      <p class="tools"><strong>Final forecast:</strong> Spain 27.68% &middot; France 20.96% &middot; England 16.38% &middot; Argentina 12.19%</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/World-Cup-2026-ML-Forecast" target="_blank" rel="noopener noreferrer">View Notebook &rarr;</a>
+        <a href="https://drive.google.com/file/d/1hAGYmzpROk2vBFJR4RiLYKVi6XEC7RpJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Paper &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Quantitative Finance Project</div>
+      <div class="pmeta">
+        <span class="pill">Backtesting</span>
+        <span class="pill">Systematic Strategies</span>
+        <span class="year-badge">Personal Project &middot; October 2025</span>
+      </div>
+      <h3>Systematic Trading Backtesting Engine</h3>
+      <p>Built a reusable daily-bar research engine that converts strategy signals into delayed, executable positions and evaluates performance after transaction costs. Implemented buy-and-hold, moving-average, momentum, and mean-reversion strategies; parameter-grid optimisation; trade-level extraction; drawdown analysis; and out-of-sample comparison so model selection is separated from final evaluation. The architecture keeps market data, signal generation, accounting, and research logic modular for transparent testing and extension.</p>
+      <p class="tools"><strong>Tools:</strong> Python, pandas, NumPy, yfinance, Jupyter, dataclasses</p>
+      <p class="tools"><strong>Key features:</strong> One-period execution delay &middot; transaction-cost modelling &middot; Sharpe / Sortino / drawdown metrics &middot; walk-forward-style train/test research</p>
+      <div class="plinks">
+        <!-- Replace the placeholder URL below with the GitHub repository link. -->
+        <a href="https://github.com/wajedulhaque2/Backtesting-Engine" target="_blank" rel="noopener noreferrer">View GitHub &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Derivatives Analytics Project</div>
+      <div class="pmeta">
+        <span class="pill">Options Pricing</span>
+        <span class="pill">Numerical Methods</span>
+        <span class="year-badge">Personal Project &middot; January 2026</span>
+      </div>
+      <h3>Options Pricing &amp; Risk Analytics Calculator</h3>
+      <p>Developed a modular derivatives-pricing toolkit and interactive Streamlit calculator covering Black&ndash;Scholes&ndash;Merton, Cox&ndash;Ross&ndash;Rubinstein binomial trees, and risk-neutral Monte Carlo simulation. Added analytical Greeks, no-arbitrage bounds, implied-volatility inversion with a bracketed Brent solver, price and Greek scenario surfaces, American early-exercise analysis, variance-reduction techniques, and optional Yahoo Finance option-chain integration.</p>
+      <p class="tools"><strong>Tools:</strong> Python, SciPy, NumPy, pandas, Matplotlib, Streamlit, yfinance</p>
+      <p class="tools"><strong>Key features:</strong> European and American options &middot; Greeks &middot; implied volatility &middot; antithetic and control variates &middot; live-market comparison</p>
+      <div class="plinks">
+        <!-- Replace the placeholder URL below with the GitHub repository link. -->
+        <a href="https://github.com/wajedulhaque2/Options-Pricing-Project" target="_blank" rel="noopener noreferrer">View GitHub &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Statistical Arbitrage Project</div>
+      <div class="pmeta">
+        <span class="pill">Pairs Trading</span>
+        <span class="pill">Statistical Arbitrage</span>
+        <span class="year-badge">Personal Project &middot; June 2026</span>
+      </div>
+      <h3>Pairs Trading Research &amp; Paper-Trading System</h3>
+      <p>Built an end-to-end statistical-arbitrage workflow that screens a stock universe for viable pairs using return correlation, cointegration, Augmented Dickey&ndash;Fuller testing, regression hedge ratios, and mean-reversion half-life. Implemented stateful z-score entry, exit, stop-loss, and maximum-holding-period rules, then evaluated the strategy with delayed execution, transaction costs, short-borrow costs, gross-normalised two-leg exposure, trade-level analytics, and a passive benchmark. Added training-only parameter optimisation, out-of-sample evaluation, cached market-data pipelines, and a dry-run-first Alpaca paper-trading adapter that converts the latest spread signal into beta-adjusted integer-share order plans.</p>
+      <p class="tools"><strong>Tools:</strong> Python, pandas, NumPy, scikit-learn, statsmodels, yfinance, Alpaca API, Jupyter</p>
+      <p class="tools"><strong>Key features:</strong> Cointegration and ADF screening &middot; OLS hedge-ratio estimation &middot; z-score spread signals &middot; borrow and transaction costs &middot; train/test optimisation &middot; paper-trading bridge</p>
+      <div class="plinks">
+        <!-- Replace the placeholder URL below with the GitHub repository link. -->
+        <a href="https://github.com/wajedulhaque2/Pairs-Trading" target="_blank" rel="noopener noreferrer">View GitHub &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Financial Modelling Project</div>
+      <div class="pmeta">
+        <span class="pill">Valuation</span>
+        <span class="pill">Excel Financial Modelling</span>
+        <span class="year-badge">Personal Project &middot; 2026</span>
+      </div>
+      <h3>Rolls-Royce Financial Model &amp; Valuation</h3>
+      <p>Built a fully linked Rolls-Royce Holdings plc valuation model covering FY2016&ndash;FY2025 historical analysis, FY2026E&ndash;FY2030E forecasting, segment operating drivers, DCF valuation, trading comparables, sensitivity analysis, scenario valuation, Power Query, and model-integrity checks.</p>
+      <p class="tools"><strong>Tools:</strong> Excel 365, financial modelling, Power Query, Power Pivot, DCF, trading comparables, sensitivity tables, scenario analysis</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/Rolls-Royce-Financial-Model" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+        <a href="https://raw.githubusercontent.com/wajedulhaque2/Rolls-Royce-Financial-Model/main/workbook/Rolls_Royce_Financial_Model_Portfolio.xlsx">Download Excel &darr;</a>
+        <a href="https://github.com/wajedulhaque2/Rolls-Royce-Financial-Model/blob/main/docs/Rolls_Royce_Project_Summary.pdf" target="_blank" rel="noopener noreferrer">PDF Summary &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Predictive Maintenance Project</div>
+      <div class="pmeta">
+        <span class="pill">Predictive Maintenance</span>
+        <span class="pill">Excel Analytics</span>
+        <span class="year-badge">Personal Project &middot; 2026</span>
+      </div>
+      <h3>Aircraft Engine Health Monitoring &amp; Predictive Maintenance</h3>
+      <p>Modelled NASA C-MAPSS FD001 turbofan degradation data in Excel, combining Power Query, Power Pivot / DAX, reliability analysis, sensor-based health scoring, interpretable Remaining Useful Life regression, empirical uncertainty, and Solver-based maintenance scheduling.</p>
+      <p class="tools"><strong>Tools:</strong> Excel, Power Query, Power Pivot, DAX, regression, validation design, predictive maintenance, Solver optimisation</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/Aircraft_Engine_Predictive_Maintenance" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+        <a href="https://raw.githubusercontent.com/wajedulhaque2/Aircraft_Engine_Predictive_Maintenance/main/workbook/Aircraft_Engine_Predictive_Maintenance_Portfolio.xlsx">Download Excel &darr;</a>
+        <a href="https://github.com/wajedulhaque2/Aircraft_Engine_Predictive_Maintenance/blob/main/docs/Aircraft_Engine_Project_Summary.pdf" target="_blank" rel="noopener noreferrer">PDF Summary &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Transport Analytics Project</div>
+      <div class="pmeta">
+        <span class="pill">Excel Analytics</span>
+        <span class="pill">Transport</span>
+        <span class="year-badge">Personal Project &middot; August 2026</span>
+      </div>
+      <h3>London Transport Demand &amp; Station Performance</h3>
+      <p>Built an Excel analytics model for London transport demand, station usage, passenger flows, and Underground service performance using TfL data. The project uses Power Query, Power Pivot, DAX, PivotTables, PivotCharts, slicers, and multiple dashboard views.</p>
+      <p class="tools"><strong>Tools:</strong> Excel, Power Query, Power Pivot, DAX, relational data modelling, dashboard design, data-quality controls</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/London-Transport-Excel-Analytics" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+        <a href="https://raw.githubusercontent.com/wajedulhaque2/London-Transport-Excel-Analytics/main/workbook/London_Transport_Demand_Analytics_Portfolio.xlsx">Download Excel &darr;</a>
+        <a href="https://github.com/wajedulhaque2/London-Transport-Excel-Analytics/blob/main/docs/London_Transport_Project_Summary.pdf" target="_blank" rel="noopener noreferrer">PDF Summary &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard reveal">
+      <div class="pmeta">
+        <span class="pill">Engineering Finance</span>
+        <span class="pill">Optimisation</span>
+        <span class="year-badge">Personal Project &middot; 2026</span>
+      </div>
+      <h3>HouseZero Solar &amp; Battery Retrofit Optimisation</h3>
+      <p>Built an engineering-finance model using 8,784 hourly observations to evaluate solar PV and battery retrofit scenarios for Harvard HouseZero, including battery dispatch, self-sufficiency, NPV, IRR, payback, two-variable scenario analysis, and break-even economics.</p>
+      <p class="tools"><strong>Tools:</strong> Excel, Power Query, named ranges, structured formulas, Data Tables, Goal Seek, discounted cash-flow modelling</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/HouseZero-Solar-Battery-Optimisation" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+        <a href="https://raw.githubusercontent.com/wajedulhaque2/HouseZero-Solar-Battery-Optimisation/main/workbook/HouseZero_Solar_Battery_Optimisation_Portfolio.xlsx">Download Excel &darr;</a>
+        <a href="https://github.com/wajedulhaque2/HouseZero-Solar-Battery-Optimisation/blob/main/docs/HouseZero_Project_Summary.pdf" target="_blank" rel="noopener noreferrer">PDF Summary &rarr;</a>
+      </div>
+    </article>
+
+    <article class="pcard featured reveal">
+      <div class="featured-badge">&#9733; Decision-Support Project</div>
+      <div class="pmeta">
+        <span class="pill">World Bank API</span>
+        <span class="pill">Infrastructure</span>
+        <span class="year-badge">Personal Project &middot; 2026</span>
+      </div>
+      <h3>Global Water Infrastructure Prioritisation</h3>
+      <p>Created an interactive Excel decision-support model that retrieves World Bank development indicators through Power Query, converts them into transparent 0&ndash;100 Need Scores, applies scenario-driven pillar weights, and dynamically ranks countries for further water-infrastructure investigation.</p>
+      <p class="tools"><strong>Tools:</strong> Excel, Power Query / M, REST API ingestion, LAMBDA, LET, MAP, dynamic arrays, scenario analysis, data-quality controls</p>
+      <div class="plinks">
+        <a href="https://github.com/wajedulhaque2/global-water-infrastructure-prioritisation" target="_blank" rel="noopener noreferrer">View Project &rarr;</a>
+        <a href="https://raw.githubusercontent.com/wajedulhaque2/global-water-infrastructure-prioritisation/main/Global_Water_Infrastructure_Prioritisation_Tool.xlsx">Download Excel &darr;</a>
+        <a href="https://github.com/wajedulhaque2/global-water-infrastructure-prioritisation/blob/main/docs/methodology.md" target="_blank" rel="noopener noreferrer">Methodology &rarr;</a>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== DESIGN & SUSTAINABILITY ===== -->
+  <section id="design">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Design &amp; Sustainability</span>
+        <h2>End-to-end design thinking and global impact.</h2>
+        <p>From circular economy prototyping with real user testing to smart water infrastructure for rural East Africa, engineering applied to sustainability and human development challenges.</p>
+      </div>
+
+      <div class="project-grid">
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Major Design Project</div>
+          <div class="pmeta">
+            <span class="pill">Product Design</span>
+            <span class="pill">Circular Economy</span>
+            <span class="year-badge">Year 2 &middot; Design Project</span>
+          </div>
+          <h3>Reusable Takeaway Packaging | Revolutionising the Circular Economy</h3>
+          <p>Led end-to-end development of eco-friendly reusable Chinese takeaway containers with a QR-code return system and mobile app, from initial proposal through to physical prototyping and user testing. Progressed from Product Design Specification (PDS) to FDM 3D-printed PLA prototypes fabricated on Bambu printers at UCL MechSpace, then conducted tensile and compression testing to validate structural integrity. Ran FEA in Fusion 360 and surveyed 30+ members of the public outside King&rsquo;s Cross Station (mean aesthetics rating: 8.0/10, mean ergonomics rating: 8.1/10).</p>
+          <p class="tools"><strong>Tools:</strong> Fusion 360 (FEA), Bambu FDM 3D printing (PLA), tensile &amp; compression testing, user survey design</p>
+          <p class="tools"><strong>Deliverables:</strong> PDS &rarr; 3D prototype &rarr; mechanical testing &rarr; public user study</p>
+          <div class="plinks">
+            <a href="https://drive.google.com/file/d/1Bc-OLHzLMUv5924ctaI8SRhzwWE_Znyn/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Presentations &rarr;</a>
+            <a href="https://drive.google.com/file/d/13EfDniLT6s-_a0HA09G0wokBa2nqG6Bk/view?usp=sharing" target="_blank" rel="noopener noreferrer">View PDS &rarr;</a>
+            <a href="https://a360.co/4vkKKiX" target="_blank" rel="noopener noreferrer">View CAD &rarr;</a>
+          </div>
+        </article>
+
+        <article class="pcard featured reveal">
+          <div class="featured-badge">&#9733; Global Impact Project</div>
+          <div class="pmeta">
+            <span class="pill">Global Development</span>
+            <span class="pill">Water Infrastructure</span>
+            <span class="year-badge">Year 3 &middot; Ethiopia Project</span>
+          </div>
+          <h3>Smart Hybrid Water Supply | Rural Schools in Ethiopia</h3>
+          <p>Designed a solar-powered hybrid water supply system targeting three rural school sites in Ethiopia (Gode, Dillo, and Sekota) with highly variable water availability. Combined solar-powered borehole pumps with rainwater harvesting and UV filtration into a single resilient system, with float sensors and Water digital monitoring for remote management. Aligned the full design with UN Sustainable Development Goals 3 (health), 4 (education), 5 (gender equality), and 6 (clean water &amp; sanitation).</p>
+          <p class="tools"><strong>Tools:</strong> Hydraulic system design, solar sizing calculations, Water monitoring<br><strong>Sites:</strong> Gode, Dillo, Sekota &middot; SDGs: 3, 4, 5, 6</p>
+          <div class="plinks"><a href="https://drive.google.com/file/d/1RY-SC1WE5-U1KKCh73q5nd07u2DxBtxq/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Poster &rarr;</a> <a href="https://drive.google.com/file/d/1gRYFOorY8gDAbghgNr3OmrViynRPH8X7/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Brief &rarr;</a></div>
+        </article>
+
+        <article class="pcard reveal">
+          <div class="pmeta">
+            <span class="pill">Project Management</span>
+            <span class="year-badge">Year 3</span>
+          </div>
+          <h3>Enhanced Waterfall Methodology | HMRC Tax Filing System</h3>
+          <p>Proposed an &ldquo;Enhanced Waterfall&rdquo; model as an improvement on traditional sequential development, adding requirements validation gates between phases, inter-phase risk checkpoints, and formal stakeholder governance reviews. Applied the framework to the HMRC tax filing system as a case study, demonstrating how the additions address the most common failure modes of classical Waterfall (scope creep, late defect discovery, insufficient stakeholder alignment).</p>
+          <p class="tools"><strong>Tools:</strong> Waterfall methodology, risk register, stakeholder governance framework</p>
+          <div class="plinks"><a href="https://drive.google.com/file/d/1Pdt6j4GFCehOtwgdKPF_CURd5EsJcXtC/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Report &rarr;</a></div>
+        </article>
+
+        <article class="pcard reveal">
+          <div class="pmeta">
+            <span class="pill">Project Management</span>
+            <span class="pill">Renewable Energy</span>
+            <span class="year-badge">Year 3 &middot; Team Alpha</span>
+          </div>
+          <h3>Solar EPC Project Plan | Bapco Refinery, Bahrain</h3>
+          <p>Produced a full Engineering, Procurement, and Construction (EPC) project plan for rooftop solar PV installation across 11 buildings at the Bapco Refining facility in Bahrain. Applied Waterfall + PRINCE2 methodology to structure the plan, generating a complete Work Breakdown Structure (WBS), Gantt chart, risk register, Request for Proposal (RFP), and contract documentation. Scoped system sizing, contractor procurement, and commissioning milestones from concept to handover.</p>
+          <p class="tools"><strong>Tools:</strong> PRINCE2, WBS, Gantt chart, risk register, RFP documentation</p>
+          <p class="tools"><strong>Scope:</strong> 11 buildings &middot; Bapco Refining, Bahrain</p>
+          <div class="plinks"><a href="https://drive.google.com/file/d/168Um7JfYtN4ruamva3N7qRDLbC7FJ8OH/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Plan &rarr;</a></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+<section id="beyond">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Beyond Engineering</span>
+      <h2>Initiatives outside the curriculum.</h2>
+      <p>Work that goes beyond coursework — research, institutional change, and student-led initiatives.</p>
+    </div>
+    <div class="project-grid">
+
+      <article class="pcard reveal">
+        <div class="pmeta">
+          <span class="pill">Education Research</span>
+          <span class="pill">Data Analysis</span>
+          <span class="year-badge">Summer 2025 &middot; UCL Studentship</span>
+        </div>
+        <h3>UCL Summer Studentship | Evaluation of Assessment and Learning</h3>
+        <p>Investigated workload efficiency, feedback quality, and marking rubric standards across all Year 2 UCL Mechanical Engineering modules, supervised by Dr Nelia Jurado Pontes. Analysed data from five student collaborators across two cohorts (2023/24 and 2024/25), quantifying credits-per-hour efficiency per module and identifying systemic patterns in feedback and rubric quality. Presented findings directly to the department, with several recommendations subsequently implemented, resulting in measurable improvements to student satisfaction across the following year group.</p>
+        <p class="tools"><strong>Tools:</strong> Excel, survey design, rubric evaluation, data analysis<br><strong>Key finding:</strong> Credits/hour ranged from 0.10 to 0.34 across modules &middot; 53% of rubrics fully representative of credit weighting</p>
+        <div class="plinks">
+          <a href="https://drive.google.com/file/d/1ZeuSUJ5qNVe5ydk0aEyzELnxBiehYxki/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Methodology &rarr;</a>
+          <a href="https://drive.google.com/file/d/1KeXxVRk_poNGxccOeJ1K0LdgIzlZw2YE/view?usp=sharing" target="_blank" rel="noopener noreferrer">View Slides &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+  <hr class="rule">
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Skills &amp; Tools</span>
+        <h2>Built up across three years.</h2>
+        <p>Reflecting what&rsquo;s demonstrated across the projects above.</p>
+      </div>
+      <div class="skills-wrap reveal">
+        <span class="skill">Star-CCM+ (CFD / RANS-VOF)</span>
+        <span class="skill">Microsoft Office</span>
+        <span class="skill">Excel Power Query</span>
+        <span class="skill">Excel Power Pivot</span>
+        <span class="skill">DAX</span>
+        <span class="skill">Data Modelling</span>
+        <span class="skill">PivotTables &amp; PivotCharts</span>
+        <span class="skill">Dashboard Design</span>
+        <span class="skill">ABAQUS (FEA)</span>
+        <span class="skill">ANSYS Workbench</span>
+        <span class="skill">GSA (Structural FEM)</span>
+        <span class="skill">Fusion 360 CAD</span>
+        <span class="skill">MATLAB</span>
+        <span class="skill">Python</span>
+        <span class="skill">Simulink</span>
+        <span class="skill">LabVIEW</span>
+        <span class="skill">Machine Learning (scikit-learn)</span>
+        <span class="skill">Python (pandas / NumPy)</span>
+        <span class="skill">Mathematical Modelling</span>
+        <span class="skill">Fluid Mechanics</span>
+        <span class="skill">Truss Analysis</span>
+        <span class="skill">Oblique Shock Theory</span>
+        <span class="skill">Exergy Analysis</span>
+        <span class="skill">Differential Equations</span>
+        <span class="skill">Mathematical Modelling</span>
+        <span class="skill">Epidemic Modelling (SIR)</span>
+        <span class="skill">Regression &amp; Hypothesis Testing</span>
+        <span class="skill">Tensile &amp; Impact Testing</span>
+        <span class="skill">Metallography</span>
+        <span class="skill">3D Printing (FDM)</span>
+        <span class="skill">Mechatronics</span>
+        <span class="skill">Circuit Design</span>
+        <span class="skill">PRINCE2</span>
+        <span class="skill">WBS &amp; Risk Registers</span>
+        <span class="skill">Excel</span>
+        <span class="skill">Technical Report Writing</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="panel reveal">
+        <span class="card-label">Get in Touch</span>
+        <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--sp4)">Let&rsquo;s connect.</h2>
+        <p style="color:var(--muted)">Open to opportunities, feel free to reach out.</p>
+        <div class="cta-row">
+           <a class="btn btn-primary" onclick="prompt('Copy this email address:','wajedulhaque2@gmail.com')" style="cursor:pointer">Email Me</a>
+           <a class="btn btn-ghost" href="https://www.linkedin.com/in/wajedul-haque-59056b291" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <span class="card-label">Current Status</span>
+        <ul class="check-list">
+          <li>4th year MEng student at UCL, 2026/27</li>
+          <li>Final Year Project: Resonant Compliant Mechanism Testbed, replicating honeybee wing-hinge dynamics using swappable stiffness inserts and FEA validation</li>
+          <li>Modules: Data-Driven Methods for Engineers, Engineering in Extreme Environments, Financial Aspects of Project Engineering, Spanish</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Wajedul Haque &middot; UCL Mechanical Engineering</span>
+  </div>
+</footer>
+
+<!--
+  WORKBOOK LINKS:
+  1) Upload the final .xlsx file to OneDrive.
+  2) Create a public read-only Excel-for-the-web link and paste it into viewUrl below.
+  3) Optionally paste a direct download link into downloadUrl.
+-->
+<script>
+window.PORTFOLIO_WORKBOOK_LINKS = {
+  viewUrl: "https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemwh0_ucl_ac_uk/IQAGVu4VrY7PQ4DES_G_1m0bATrMmkfhg1IHG52Z7CZP2dc?e=9eXPXs",
+  downloadUrl: "https://raw.githubusercontent.com/wajedulhaque2/UK-GMPP-Risk-Dashboard/main/workbook/UK_GMPP_Risk_Dashboard_Portfolio.xlsx"
+};
+</script>
+
+<script>
+(function(){
+  // Configure the live workbook and download links from one place.
+  var workbookLinks = window.PORTFOLIO_WORKBOOK_LINKS || {};
+  function configureWorkbookLinks(selector, url, pendingLabel){
+    document.querySelectorAll(selector).forEach(function(link){
+      if(url){
+        link.href = url;
+        link.removeAttribute("aria-disabled");
+        link.textContent = link.hasAttribute("data-workbook-view") ? "View Live Workbook →" : "Download Excel Workbook →";
+      } else {
+        link.href = "#";
+        link.setAttribute("aria-disabled", "true");
+        link.textContent = pendingLabel;
+        link.addEventListener("click", function(event){ event.preventDefault(); });
+      }
+    });
+  }
+  configureWorkbookLinks("[data-workbook-view]", workbookLinks.viewUrl, "Live Workbook Link Pending");
+  configureWorkbookLinks("[data-workbook-download]", workbookLinks.downloadUrl, "Download Link Pending");
+  // Theme toggle
+  var btn=document.querySelector("[data-theme-toggle]");
+  var root=document.documentElement;
+  var theme=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+  root.setAttribute("data-theme",theme);
+  function setIcon(){
+    btn.setAttribute("aria-label","Switch to "+(theme==="dark"?"light":"dark")+" mode");
+    btn.innerHTML=theme==="dark"
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  }
+  setIcon();
+  btn.addEventListener("click",function(){
+    theme=theme==="dark"?"light":"dark";
+    root.setAttribute("data-theme",theme);
+    setIcon();
+  });
+
+  // Year tab switching — one handler per tab group
+  document.querySelectorAll(".year-nav").forEach(function(nav){
+    nav.addEventListener("click",function(e){
+      var tab=e.target.closest(".year-tab");
+      if(!tab)return;
+      var target=tab.getAttribute("data-target");
+      // Deactivate all tabs in this nav
+      nav.querySelectorAll(".year-tab").forEach(function(t){t.classList.remove("active")});
+      tab.classList.add("active");
+      // Find the parent section and toggle groups within it
+      var section=nav.closest("section");
+      section.querySelectorAll(".year-group").forEach(function(g){
+        g.classList.toggle("active", g.id===target);
+      });
+    });
+  });
+
+  // Scroll reveal
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("vis");});
+  },{threshold:0.1});
+  document.querySelectorAll(".reveal").forEach(function(el,i){
+    if(!el.classList.contains("vis"))el.style.transitionDelay=Math.min(i*25,180)+"ms";
+    obs.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
