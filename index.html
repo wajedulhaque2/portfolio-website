@@ -118,6 +118,33 @@
     .sec-tag{display:block;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:var(--sp3)}
     .sec-head h2{font-family:var(--font-display);font-size:var(--text-2xl)}
     .sec-head p{color:var(--muted);margin-top:var(--sp4);max-width:64ch}
+
+    /* PROJECT FINDER */
+    .finder-panel{background:linear-gradient(145deg,var(--surface2),var(--surface));border:1px solid var(--accentborder);border-radius:var(--radius-xl);padding:var(--sp8);box-shadow:var(--sh-md)}
+    .finder-top{display:grid;grid-template-columns:1fr auto;gap:var(--sp4);align-items:end}
+    .finder-copy h2{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--sp2)}
+    .finder-copy p{color:var(--muted);font-size:var(--text-sm)}
+    .finder-search{margin-top:var(--sp6);display:flex;gap:var(--sp3);align-items:center;flex-wrap:wrap}
+    .finder-input-wrap{position:relative;flex:1 1 28rem}
+    .finder-input-wrap svg{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--faint);pointer-events:none}
+    .finder-input{width:100%;min-height:52px;border-radius:var(--radius-full);border:1px solid var(--border);background:var(--bg);color:var(--text);padding:.85rem 1rem .85rem 3rem;font:inherit;box-shadow:var(--sh-sm);transition:border-color var(--transition),box-shadow var(--transition),background var(--transition)}
+    .finder-input::placeholder{color:var(--faint)}
+    .finder-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accentbg)}
+    .finder-clear{min-height:48px;padding:.75rem 1rem;border-radius:var(--radius-full);border:1px solid var(--border);background:var(--surface);color:var(--muted);font-weight:600;transition:background var(--transition),color var(--transition),border-color var(--transition)}
+    .finder-clear:hover{background:var(--accentbg);color:var(--text);border-color:var(--accentborder)}
+    .finder-chips{display:flex;flex-wrap:wrap;gap:var(--sp2);margin-top:var(--sp4)}
+    .finder-chip{padding:.5rem .85rem;border-radius:var(--radius-full);border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:var(--text-xs);font-weight:600;transition:background var(--transition),color var(--transition),border-color var(--transition),transform var(--transition)}
+    .finder-chip:hover{transform:translateY(-1px);border-color:var(--accentborder);color:var(--text)}
+    .finder-chip.active{background:var(--accentbg);border-color:var(--accentborder);color:var(--accent2)}
+    .finder-status{display:flex;justify-content:space-between;gap:var(--sp4);align-items:center;margin-top:var(--sp5);color:var(--muted);font-size:var(--text-sm)}
+    .finder-hint{color:var(--faint);font-size:var(--text-xs)}
+    .finder-results{margin-top:var(--sp6)}
+    .finder-results:empty{display:none}
+    .finder-result{opacity:1!important;transform:none!important}
+    .finder-empty{display:none;margin-top:var(--sp6);padding:var(--sp6);border:1px dashed var(--border);border-radius:var(--radius-lg);color:var(--muted);text-align:center}
+    .finder-empty.show{display:block}
+    @media(max-width:700px){.finder-top{grid-template-columns:1fr}.finder-status{align-items:flex-start;flex-direction:column}.finder-panel{padding:var(--sp6)}}
+
     /* ABOUT */
     .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp6)}
     .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--sp8);box-shadow:var(--sh-sm)}
@@ -257,6 +284,44 @@
           <div class="stat"><strong>UCL</strong><span>Mech Eng, London. Expected 1st Class graduation in 2027.</span></div>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+
+  <section id="project-finder" data-project-finder>
+    <div class="wrap">
+      <div class="finder-panel reveal">
+        <div class="finder-top">
+          <div class="finder-copy">
+            <span class="sec-tag">Recruiter Project Finder</span>
+            <h2>Find the work most relevant to you.</h2>
+            <p>Search across the full portfolio by industry, skill, software, method or project type, or start with one of the field filters below.</p>
+          </div>
+        </div>
+        <div class="finder-search">
+          <div class="finder-input-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input class="finder-input" data-finder-input type="search" autocomplete="off" placeholder="Try: DCF, CFD, Python, Excel, aerospace, water, machine learning..." aria-label="Search portfolio projects">
+          </div>
+          <button class="finder-clear" type="button" data-finder-clear>Clear</button>
+        </div>
+        <div class="finder-chips" aria-label="Project field filters">
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="finance financial valuation dcf trading options backtesting pairs quant portfolio investor">Quant / Finance</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="machine learning data analytics statistics regression python jupyter prediction forecasting">Data / ML</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="cfd fea abaqus ansys star-ccm structural mechanics dynamics aerofoil hydrodynamics supersonic turbine materials">Mechanical / Simulation</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="energy solar battery hydroelectric water infrastructure transport government fuel cell renewable">Energy / Infrastructure</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="project management prince2 waterfall risk register stakeholder wbs governance operations">Project / Operations</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="sustainability circular economy design product global development environment lca reusable">Sustainability / Design</button>
+        </div>
+        <div class="finder-status">
+          <span data-finder-count aria-live="polite">Search the portfolio or choose a field.</span>
+          <span class="finder-hint">Search checks project titles, tags, descriptions, tools and outputs.</span>
+        </div>
+        <div class="project-grid finder-results" data-finder-results></div>
+        <div class="finder-empty" data-finder-empty>No matching projects yet. Try a broader term such as “Excel”, “Python”, “FEA”, “finance” or “sustainability”.</div>
+      </div>
     </div>
   </section>
 
@@ -1106,6 +1171,76 @@ window.PORTFOLIO_WORKBOOK_LINKS = {
   }
   configureWorkbookLinks("[data-workbook-view]", workbookLinks.viewUrl, "Live Workbook Link Pending");
   configureWorkbookLinks("[data-workbook-download]", workbookLinks.downloadUrl, "Download Link Pending");
+
+  // Recruiter project finder
+  var finder=document.querySelector('[data-project-finder]');
+  if(finder){
+    var finderInput=finder.querySelector('[data-finder-input]');
+    var finderResults=finder.querySelector('[data-finder-results]');
+    var finderCount=finder.querySelector('[data-finder-count]');
+    var finderEmpty=finder.querySelector('[data-finder-empty]');
+    var finderClear=finder.querySelector('[data-finder-clear]');
+    var finderFilters=Array.from(finder.querySelectorAll('[data-finder-filter]'));
+    var sourceCards=Array.from(document.querySelectorAll('article.pcard')).filter(function(card){return !card.closest('#project-finder');});
+    var projectIndex=sourceCards.map(function(card){
+      return {card:card,text:(card.textContent||'').toLowerCase().replace(/\s+/g,' ').trim()};
+    });
+    var activeFilter=null;
+
+    function renderFinder(){
+      var query=(finderInput.value||'').toLowerCase().trim();
+      var terms=query.split(/\s+/).filter(Boolean);
+      var filterWords=activeFilter ? activeFilter.getAttribute('data-keywords').toLowerCase().split(/\s+/).filter(Boolean) : [];
+      finderResults.innerHTML='';
+
+      if(!terms.length && !filterWords.length){
+        finderCount.textContent='Search the portfolio or choose a field.';
+        finderEmpty.classList.remove('show');
+        return;
+      }
+
+      var matches=projectIndex.filter(function(item){
+        var text=item.text;
+        var queryMatch=terms.every(function(term){return text.indexOf(term)!==-1;});
+        var filterMatch=!filterWords.length || filterWords.some(function(word){return text.indexOf(word)!==-1;});
+        return queryMatch && filterMatch;
+      });
+
+      matches.forEach(function(item){
+        var clone=item.card.cloneNode(true);
+        clone.classList.remove('reveal');
+        clone.classList.add('vis','finder-result');
+        clone.style.transitionDelay='0ms';
+        finderResults.appendChild(clone);
+      });
+
+      finderCount.textContent=matches.length + (matches.length===1 ? ' matching project' : ' matching projects');
+      finderEmpty.classList.toggle('show',matches.length===0);
+    }
+
+    finderInput.addEventListener('input',renderFinder);
+    finderFilters.forEach(function(filter){
+      filter.addEventListener('click',function(){
+        if(activeFilter===filter){
+          filter.classList.remove('active');
+          activeFilter=null;
+        }else{
+          finderFilters.forEach(function(f){f.classList.remove('active');});
+          filter.classList.add('active');
+          activeFilter=filter;
+        }
+        renderFinder();
+      });
+    });
+    finderClear.addEventListener('click',function(){
+      finderInput.value='';
+      finderFilters.forEach(function(f){f.classList.remove('active');});
+      activeFilter=null;
+      renderFinder();
+      finderInput.focus();
+    });
+  }
+
   // Theme toggle
   var btn=document.querySelector("[data-theme-toggle]");
   var root=document.documentElement;
