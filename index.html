@@ -308,11 +308,11 @@
           <button class="finder-clear" type="button" data-finder-clear>Clear</button>
         </div>
         <div class="finder-chips" aria-label="Project field filters">
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="finance financial valuation dcf trading options backtesting pairs quant portfolio investor">Quant / Finance</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="machine learning data analytics statistics regression python jupyter prediction forecasting">Data / ML</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="finance financial valuation dcf trading options backtesting pairs quant investor">Quant / Finance</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="machine learning analytics statistics regression python jupyter prediction forecasting">Data / ML</button>
           <button class="finder-chip" type="button" data-finder-filter data-keywords="cfd fea abaqus ansys star-ccm structural mechanics dynamics aerofoil hydrodynamics supersonic turbine materials">Mechanical / Simulation</button>
           <button class="finder-chip" type="button" data-finder-filter data-keywords="energy solar battery hydroelectric water infrastructure transport government fuel cell renewable">Energy / Infrastructure</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="project management prince2 waterfall risk register stakeholder wbs governance operations">Project / Operations</button>
+          <button class="finder-chip" type="button" data-finder-filter data-keywords="management prince2 waterfall risk register stakeholder wbs governance operations">Project / Operations</button>
           <button class="finder-chip" type="button" data-finder-filter data-keywords="sustainability circular economy design product global development environment lca reusable">Sustainability / Design</button>
         </div>
         <div class="finder-status">
@@ -1182,9 +1182,22 @@ window.PORTFOLIO_WORKBOOK_LINKS = {
     var finderClear=finder.querySelector('[data-finder-clear]');
     var finderFilters=Array.from(finder.querySelectorAll('[data-finder-filter]'));
     var sourceCards=Array.from(document.querySelectorAll('article.pcard')).filter(function(card){return !card.closest('#project-finder');});
-    var projectIndex=sourceCards.map(function(card){
-      return {card:card,text:(card.textContent||'').toLowerCase().replace(/\s+/g,' ').trim()};
+    var seenProjectTitles={};
+    var projectIndex=[];
+    sourceCards.forEach(function(card){
+      var titleNode=card.querySelector('h3');
+      var title=(titleNode ? titleNode.textContent : '').toLowerCase().replace(/\s+/g,' ').trim();
+      if(title && seenProjectTitles[title])return;
+      if(title)seenProjectTitles[title]=true;
+      projectIndex.push({card:card,text:(card.textContent||'').toLowerCase().replace(/\s+/g,' ').trim()});
     });
+    var finderAliases={
+      aerospace:['aerospace','aircraft','aerofoil','supersonic','turbine','engine'],
+      aviation:['aviation','aircraft','engine','aerofoil','supersonic'],
+      coding:['coding','python','matlab','javascript','jupyter'],
+      markets:['markets','market','trading','finance','financial','investor','valuation'],
+      infrastructure:['infrastructure','transport','water','government','solar','hydroelectric']
+    };
     var activeFilter=null;
 
     function renderFinder(){
@@ -1201,7 +1214,7 @@ window.PORTFOLIO_WORKBOOK_LINKS = {
 
       var matches=projectIndex.filter(function(item){
         var text=item.text;
-        var queryMatch=terms.every(function(term){return text.indexOf(term)!==-1;});
+        var queryMatch=terms.every(function(term){var options=finderAliases[term]||[term];return options.some(function(option){return text.indexOf(option)!==-1;});});
         var filterMatch=!filterWords.length || filterWords.some(function(word){return text.indexOf(word)!==-1;});
         return queryMatch && filterMatch;
       });
