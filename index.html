@@ -245,6 +245,7 @@
       Wajedul Haque
     </a>
     <nav class="nav-links" aria-label="Primary">
+      <a href="#project-finder">Explore</a>
       <a href="#about">About</a>
       <a href="#featured-work">Featured</a>
       <a href="#engineering">Engineering</a>
@@ -270,13 +271,13 @@
           I&rsquo;m Wajedul Haque, passionate about learning new things every day and seeing meaningful applications of them. From pylon design and underwater vehicle CFD to ML in healthcare and global development, I bring the same curiosity to every problem.
         </p>
         <div class="cta-row reveal">
-          <a class="btn btn-primary" href="#engineering">View Projects</a>
+          <a class="btn btn-primary" href="#project-finder">Explore Projects</a>
           <a class="btn btn-ghost" href="#contact">Contact Me</a>
         </div>
       </div>
       <aside class="stat-card reveal">
         <span class="card-label">Portfolio Overview</span>
-        <h2 style="font-family:var(--font-display);font-size:var(--text-xl)">Three years.<br>Thirty-four projects.</h2>
+        <h2 style="font-family:var(--font-display);font-size:var(--text-xl)">Three years.<br>Thirty-five projects.</h2>
         <div class="stat-grid">
           <div class="stat"><strong>14</strong><span>Engineering projects | structural, fluids, FEA &amp; advanced thermo.</span></div>
           <div class="stat"><strong>16</strong><span>Data / ML / Quant Finance | Excel dashboards, forecasting, backtesting, pricing, statistical arbitrage &amp; clinical models.</span></div>
@@ -295,32 +296,35 @@
       <div class="finder-panel reveal">
         <div class="finder-top">
           <div class="finder-copy">
-            <span class="sec-tag">Recruiter Project Finder</span>
-            <h2>Find the work most relevant to you.</h2>
-            <p>Search across the full portfolio by industry, skill, software, method or project type, or start with one of the field filters below.</p>
+            <span class="sec-tag">Project Explorer</span>
+            <h2>Explore projects by field, skill or method.</h2>
+            <p>Search by industry, discipline, software or technique. Results are ranked using project-specific metadata so the strongest matches appear first.</p>
           </div>
         </div>
         <div class="finder-search">
           <div class="finder-input-wrap">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input class="finder-input" data-finder-input type="search" autocomplete="off" placeholder="Try: DCF, CFD, Python, Excel, aerospace, water, machine learning..." aria-label="Search portfolio projects">
+            <input class="finder-input" data-finder-input type="search" autocomplete="off" placeholder="Try: aerospace + Excel, CFD, Power Query, predictive maintenance, DCF..." aria-label="Search portfolio projects">
           </div>
           <button class="finder-clear" type="button" data-finder-clear>Clear</button>
         </div>
         <div class="finder-chips" aria-label="Project field filters">
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="finance financial valuation dcf trading options backtesting pairs quant investor">Quant / Finance</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="machine learning analytics statistics regression python jupyter prediction forecasting">Data / ML</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="cfd fea abaqus ansys star-ccm structural mechanics dynamics aerofoil hydrodynamics supersonic turbine materials">Mechanical / Simulation</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="energy solar battery hydroelectric water infrastructure transport government fuel cell renewable">Energy / Infrastructure</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="management prince2 waterfall risk register stakeholder wbs governance operations">Project / Operations</button>
-          <button class="finder-chip" type="button" data-finder-filter data-keywords="sustainability circular economy design product global development environment lca reusable">Sustainability / Design</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="engineering-simulation">Mechanical / Simulation</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="aerospace-fluids">Aerospace / Fluids</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="structural-materials">Structures / Materials</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="data-ml">Data / ML</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="quant-finance">Quant / Finance</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="excel-analytics">Excel / Analytics</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="energy-infrastructure">Energy / Infrastructure</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="project-management">Project Management</button>
+          <button class="finder-chip" type="button" data-finder-filter data-category="design-sustainability">Design / Sustainability</button>
         </div>
         <div class="finder-status">
           <span data-finder-count aria-live="polite">Search the portfolio or choose a field.</span>
-          <span class="finder-hint">Search checks project titles, tags, descriptions, tools and outputs.</span>
+          <span class="finder-hint">Search uses curated project disciplines, industries, methods and tools.</span>
         </div>
         <div class="project-grid finder-results" data-finder-results></div>
-        <div class="finder-empty" data-finder-empty>No matching projects yet. Try a broader term such as “Excel”, “Python”, “FEA”, “finance” or “sustainability”.</div>
+        <div class="finder-empty" data-finder-empty>No strong matches found. Try a broader field, tool or method such as “Excel”, “Python”, “FEA”, “finance” or “sustainability”.</div>
       </div>
     </div>
   </section>
@@ -1172,87 +1176,7 @@ window.PORTFOLIO_WORKBOOK_LINKS = {
   configureWorkbookLinks("[data-workbook-view]", workbookLinks.viewUrl, "Live Workbook Link Pending");
   configureWorkbookLinks("[data-workbook-download]", workbookLinks.downloadUrl, "Download Link Pending");
 
-  // Recruiter project finder
-  var finder=document.querySelector('[data-project-finder]');
-  if(finder){
-    var finderInput=finder.querySelector('[data-finder-input]');
-    var finderResults=finder.querySelector('[data-finder-results]');
-    var finderCount=finder.querySelector('[data-finder-count]');
-    var finderEmpty=finder.querySelector('[data-finder-empty]');
-    var finderClear=finder.querySelector('[data-finder-clear]');
-    var finderFilters=Array.from(finder.querySelectorAll('[data-finder-filter]'));
-    var sourceCards=Array.from(document.querySelectorAll('article.pcard')).filter(function(card){return !card.closest('#project-finder');});
-    var seenProjectTitles={};
-    var projectIndex=[];
-    sourceCards.forEach(function(card){
-      var titleNode=card.querySelector('h3');
-      var title=(titleNode ? titleNode.textContent : '').toLowerCase().replace(/\s+/g,' ').trim();
-      if(title && seenProjectTitles[title])return;
-      if(title)seenProjectTitles[title]=true;
-      projectIndex.push({card:card,text:(card.textContent||'').toLowerCase().replace(/\s+/g,' ').trim()});
-    });
-    var finderAliases={
-      aerospace:['aerospace','aircraft','aerofoil','supersonic','turbine','engine'],
-      aviation:['aviation','aircraft','engine','aerofoil','supersonic'],
-      coding:['coding','python','matlab','javascript','jupyter'],
-      markets:['markets','market','trading','finance','financial','investor','valuation'],
-      infrastructure:['infrastructure','transport','water','government','solar','hydroelectric']
-    };
-    var activeFilter=null;
-
-    function renderFinder(){
-      var query=(finderInput.value||'').toLowerCase().trim();
-      var terms=query.split(/\s+/).filter(Boolean);
-      var filterWords=activeFilter ? activeFilter.getAttribute('data-keywords').toLowerCase().split(/\s+/).filter(Boolean) : [];
-      finderResults.innerHTML='';
-
-      if(!terms.length && !filterWords.length){
-        finderCount.textContent='Search the portfolio or choose a field.';
-        finderEmpty.classList.remove('show');
-        return;
-      }
-
-      var matches=projectIndex.filter(function(item){
-        var text=item.text;
-        var queryMatch=terms.every(function(term){var options=finderAliases[term]||[term];return options.some(function(option){return text.indexOf(option)!==-1;});});
-        var filterMatch=!filterWords.length || filterWords.some(function(word){return text.indexOf(word)!==-1;});
-        return queryMatch && filterMatch;
-      });
-
-      matches.forEach(function(item){
-        var clone=item.card.cloneNode(true);
-        clone.classList.remove('reveal');
-        clone.classList.add('vis','finder-result');
-        clone.style.transitionDelay='0ms';
-        finderResults.appendChild(clone);
-      });
-
-      finderCount.textContent=matches.length + (matches.length===1 ? ' matching project' : ' matching projects');
-      finderEmpty.classList.toggle('show',matches.length===0);
-    }
-
-    finderInput.addEventListener('input',renderFinder);
-    finderFilters.forEach(function(filter){
-      filter.addEventListener('click',function(){
-        if(activeFilter===filter){
-          filter.classList.remove('active');
-          activeFilter=null;
-        }else{
-          finderFilters.forEach(function(f){f.classList.remove('active');});
-          filter.classList.add('active');
-          activeFilter=filter;
-        }
-        renderFinder();
-      });
-    });
-    finderClear.addEventListener('click',function(){
-      finderInput.value='';
-      finderFilters.forEach(function(f){f.classList.remove('active');});
-      activeFilter=null;
-      renderFinder();
-      finderInput.focus();
-    });
-  }
+  // Project Explorer search is implemented in project-search.js.
 
   // Theme toggle
   var btn=document.querySelector("[data-theme-toggle]");
@@ -1299,5 +1223,6 @@ window.PORTFOLIO_WORKBOOK_LINKS = {
   });
 })();
 </script>
+<script src="/project-search.js"></script>
 </body>
 </html>
